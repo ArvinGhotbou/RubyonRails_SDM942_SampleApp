@@ -9,10 +9,11 @@
 <body>
 
 <%= yield %>
-<A HREF="../static_pages/home">Home</A> &nbsp
-<A HREF="../static_pages/help">Help</A> &nbsp
-<A HREF="../static_pages/contact">Contact</A> &nbsp
-<A HREF="../static_pages/about">About</A>
+
+<A HREF="../static_pages/home"><%= link_show(yield(:title))[:home]%></A> 
+<A HREF="../static_pages/help"><%= link_show(yield(:title))[:help]%></A> 
+<A HREF="../static_pages/contact"><%= link_show(yield(:title))[:contact]%></A> 
+<A HREF="../static_pages/about"><%= link_show(yield(:title))[:about]%></A>
 
 
 </body>
