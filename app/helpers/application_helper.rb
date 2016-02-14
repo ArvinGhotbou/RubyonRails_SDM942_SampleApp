@@ -8,16 +8,4 @@ module ApplicationHelper
          "#{page_title} | #{base_title}"
       end
    end
-   
-   def link_show(page_title = '')
-      if page_title == "Home"
-         {home: "" ,help: "Help" ,contact: "Contact" ,about: "About"}
-      elsif page_title == "Help"
-         {home: "Home" ,help: "" ,contact: "Contact" ,about: "About"}
-      elsif page_title == "Contact"
-          {home: "Home" ,help: "Help" ,contact: "" ,about: "About"}
-      elsif page_title == "About"
-           {home: "Home" ,help: "Help" ,contact: "Contact" ,about: ""}
-      end
-   end
 end
