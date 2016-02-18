@@ -1,12 +1,22 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
    <div class="container">
-      <%= link_to "sample app", root_path, id: "logo" %>
+      
+      <div class="navbar-header">
+         <%= link_to "sample app", root_path, id: "logo" %>
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span> 
+         </button>
+      </div>
+      
       <nav>
-         <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Help", help_path %></li>
-            <li><%= link_to "Log in", '#' %></li>
+         <ul class="nav navbar-nav navbar-right collapse navbar-collapse " id="myNavbar">
+            <li><%= link_to "<span class=\"glyphicon glyphicon-home\"></span> Home".html_safe, root_path %></li>
+            <li><%= link_to "<span class=\"glyphicon glyphicon-question-sign\"></span> Help".html_safe, help_path %></li>
+            <li><%= link_to "<span class=\"glyphicon glyphicon-log-in\"></span> Log in".html_safe, '#' %></li>
          </ul>
       </nav>
+      
    </div>
 </header>
