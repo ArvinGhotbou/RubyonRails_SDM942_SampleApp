@@ -40,7 +40,7 @@ h1 {
 #logo {
     float: left;
     margin-right: 10px;
-    margin-left: 10px;
+    //margin-left: 10px;
     font-size: 1.7em;
     color: white;
     text-transform: uppercase;
@@ -53,6 +53,9 @@ h1 {
     }
 }
 
+.toggle-button-margin {
+    margin-left: 10px;
+}
 /* footer */
 footer {
     margin-top: 45px;
