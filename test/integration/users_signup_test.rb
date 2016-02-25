@@ -25,6 +25,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_template 'users/show'
     assert_equal flash[:success] , "Successfully Registered. Welcome to the Sample App!"
+    assert is_logged_in?
   end
   
 end
