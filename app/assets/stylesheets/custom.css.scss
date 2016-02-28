@@ -53,6 +53,11 @@ h1 {
     }
 }
 
+.pull-right {
+     float: right;
+    margin-right: 98px; /*set margin this way in your custom styesheet*/
+  }
+
 .toggle-button-margin {
     margin-left: 10px;
 }
