@@ -17,6 +17,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   
   test "successful edit with friendly forwarding" do
     get edit_user_path(@user)
+    assert_not_nil session[:forwarding_url]
     log_in_as(@user)
     assert_redirected_to edit_user_path(@user)
     name = "Foo Bar"
@@ -27,6 +28,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                     password_confirmation: "foobar" }
     assert_not flash.empty?
     assert_redirected_to @user
+    assert_nil session[:forwarding_url]
     @user.reload
     assert_equal @user.name, name
     assert_equal @user.email, email
