@@ -54,9 +54,13 @@ class UserTest < ActiveSupport::TestCase
     assert_equal mixed_case_email.downcase, @user.reload.email
   end
   
-    test "persian name should be correct" do
+  test "persian name should be correct" do
     @user.name = "علی"
     @user.save
     assert_equal @user.name, @user.reload.name
+  end
+  
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?(:remember, '')
   end
 end
