@@ -87,8 +87,8 @@ Rails.application.configure do
     :address => 'smtp.yandex.com',
     :port => '465',
     :authentication => :plain,
-    :user_name => ENV['TinlkleSocial'],
-    :password => ENV['yandexfortinkle'],
+    :user_name => ENV['YANDEX_USERNAME'],
+    :password => ENV['YANDEX_PASSWORD'],
     :domain => 'yandex.com',
     :enable_starttls_auto => true
   }
