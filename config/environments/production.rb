@@ -78,21 +78,19 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   # MAIL
-  #config.action_mailer.default_url_options = { :host => 'example.com' }
-  config.action_mailer.default_url_options = { host: host }
-
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default :charset => "utf-8"
+  host = '<your heroku app>.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
   
-  config.action_mailer.smtp_settings = {
-    address: "smtp.yandex.com",
-    port: 465,
-    domain: "yandex.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["TinlkleSocial"],
-    password: ENV["yandexfortinkle"]
+  ActionMailer::Base.smtp_settings = {
+    :address => 'smtp.yandex.com',
+    :port => '465',
+    :authentication => :plain,
+    :user_name => ENV['TinlkleSocial'],
+    :password => ENV['yandexfortinkle'],
+    :domain => 'yandex.com',
+    :enable_starttls_auto => true
   }
+  
 end
