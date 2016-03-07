@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   get 'users/new'
-
   #get 'static_pages/home'
   #get 'static_pages/help'
   # 'static_pages/about'
@@ -29,4 +28,8 @@ Rails.application.routes.draw do
   
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
+  
+  get 'reacma' => 'users#reacma'
+  match '/users/resend' => 'users#resend', :via => [:post], :as => :resend_user
+  
 end

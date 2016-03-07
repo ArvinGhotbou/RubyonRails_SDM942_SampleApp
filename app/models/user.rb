@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
       update_attribute(:remember_digest, nil)
    end
    
-   private
+   public
    def create_activation_digest
       self.activation_token = User.new_token
       self.activation_digest = User.digest(activation_token)

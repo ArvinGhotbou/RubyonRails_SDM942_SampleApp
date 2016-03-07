@@ -77,4 +77,35 @@ class UsersController < ApplicationController
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end
+  
+  
+  public
+  # resend activation mail
+  def reacma
+    @user = User.new
+  end
+  
+  def resend
+    @user = User.find_by(email: params[:user][:email].downcase)
+    
+    if @user && @user.authenticate(params[:user][:password])
+      if @user.activated?
+        flash[:success] = 'Your Account is Active'
+        log_in @user
+        redirect_to root_url
+      else
+       @user.create_activation_digest
+       @user.update_attributes(activation_digest: @user.activation_digest)
+       @user.send_activation_email
+       flash[:info] = 'Activation Link Sent to You Email Again.'
+       redirect_to root_url
+      end
+    else
+      flash[:danger] = 'Invalid email/password combination or no User'
+      redirect_to reacma_path
+    end
+
+
+  end
+  
 end

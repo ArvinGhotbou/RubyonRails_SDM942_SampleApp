@@ -13,6 +13,9 @@
     <div class="container">
       
       <% flash.each do |message_type, message| %>
+        <% if message.include? "Account not activated." %>
+          <%= link_to "<button class=\"btn btn-primary\">Resend Activation Mail</button>".html_safe, reacma_path %>
+        <% end %>
         <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
       <% end %>
       
