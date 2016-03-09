@@ -80,7 +80,7 @@ Rails.application.configure do
   # MAIL
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'ag-ror-sdm942-sampleapp2.herokuapp.com'
+  host = 'tinkle.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   
   ActionMailer::Base.smtp_settings = {
