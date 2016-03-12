@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   
   get 'home' => 'static_pages#home'
   get 'signup' => 'users#new'
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
@@ -29,6 +33,7 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   
   get 'reacma' => 'users#reacma'
   match '/users/resend' => 'users#resend', :via => [:post], :as => :resend_user
