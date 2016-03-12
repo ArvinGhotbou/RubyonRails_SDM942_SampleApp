@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update, :destroy_self]
   before_action :admin_user, only: :destroy
   
   def index
@@ -66,10 +66,15 @@ class UsersController < ApplicationController
   end
   
   def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless @user == current_user
-    if @user != current_user
-      flash[:danger] = "Access Denied."
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless @user == current_user
+      if @user != current_user
+        flash[:danger] = "Access Denied."
+      end
+    else
+      flash[:danger] = "User Doesn't Exists."
+      redirect_to root_url
     end
   end
   
@@ -78,6 +83,16 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = @temp_user.name + " deleted"
     redirect_to users_url
+  end
+  
+  def destroy_self
+    @temp_user = User.find(params[:id])
+    if logged_in?
+      log_out
+    end
+    User.find(params[:id]).destroy
+    flash[:success] = @temp_user.name + ". Your Account Deleted Successfully."
+    redirect_to root_url
   end
   
   private

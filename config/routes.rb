@@ -38,4 +38,6 @@ Rails.application.routes.draw do
   get 'reacma' => 'users#reacma'
   match '/users/resend' => 'users#resend', :via => [:post], :as => :resend_user
   
+  get 'destroy_self' => 'users#destroy_self'
+  #match '/users/destroy_self' => 'users#destroy_self', :via => [:delete], :as => :destroy_self
 end
