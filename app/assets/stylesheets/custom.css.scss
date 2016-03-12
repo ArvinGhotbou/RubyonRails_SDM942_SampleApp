@@ -310,3 +310,14 @@ span.picture {
 .users.follow {
     padding: 0;
 }
+
+
+
+.picture_resize img {
+    //width: auto;
+    //height: 230px;
+    //margin: auto;
+     max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
