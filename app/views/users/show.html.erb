@@ -12,10 +12,12 @@
       </section>
       <section class="stats">
          <%= render 'shared/stats' %>
-         <p class= "delete_acc_button">
-            <%= link_to "<button type=\"button\" class=\"btn btn-danger\">Delete Account</button>".html_safe,
-                        destroy_self_path(:id => @user.id) , data: { confirm: "You sure?" } %>
-         </p>
+         <% !unless @user.admin %>
+            <p class= "delete_acc_button">
+               <%= link_to "<button type=\"button\" class=\"btn btn-danger\">Delete Account</button>".html_safe,
+                           destroy_self_path(:id => @user.id) , data: { confirm: "You sure?" } %>
+            </p>
+         <% end %>
       </section>
    </aside>
    <div class="col-md-8">

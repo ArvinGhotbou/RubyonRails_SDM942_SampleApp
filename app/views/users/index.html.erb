@@ -1,6 +1,21 @@
 <% provide(:title, 'All users') %>
 <h1>All users</h1>
 
+<div class="form-inline row center container">
+   <%= form_for User.new, :url => index_users_path do |f| %>
+      <div class="input-group">
+         <%= f.text_field :name, :value => @search_word ,class: 'form-control' %>
+         <span class="input-group-btn">
+            <%= f.submit "Search", class: "btn btn-primary" %>
+         </span>
+      </div>
+   <% end %>
+</div>
+
+   <% if @users.empty? %>
+      <div class="box"><b>Nothing to Show</b></div>
+   <% end %>
+</ul>
 
 <%= will_paginate %>
 

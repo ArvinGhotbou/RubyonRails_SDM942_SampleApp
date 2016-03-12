@@ -5,6 +5,12 @@ class UsersController < ApplicationController
   
   def index
     @users = User.where(activated: true).paginate(page: params[:page])
+    @search_word = ""
+    #man neveshtam - for search
+    if params[:user]
+       @users = User.where(activated: true).where("name like ?","%#{params[:user][:name]}%").paginate(page: params[:page])
+       @search_word = params[:user][:name]
+    end
   end
 
   def new
@@ -127,8 +133,5 @@ class UsersController < ApplicationController
       flash[:danger] = 'Invalid email/password combination or no User'
       redirect_to reacma_path
     end
-
-
   end
-  
 end

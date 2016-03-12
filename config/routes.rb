@@ -40,4 +40,6 @@ Rails.application.routes.draw do
   
   get 'destroy_self' => 'users#destroy_self'
   #match '/users/destroy_self' => 'users#destroy_self', :via => [:delete], :as => :destroy_self
+  
+  match '/users/index' => 'users#index', :via => [:post], :as => :index_users
 end
